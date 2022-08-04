@@ -22,7 +22,3 @@ def canUnlockAll(boxes):
         for j in hash_dict.copy().keys():
             hash_dict = integrate_box(boxes[j], hash_dict)
     return True
-
-
-boxes = [[1, 4], [2], [0, 4, 1], [3], [], [4, 1], [5, 6]]
-print(canUnlockAll(boxes))
