@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-"""
-Algorithmic excercise.
-"""
+"""Interview problem - lockboxes"""
 
 
 def canUnlockAll(boxes):
