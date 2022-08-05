@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-""" Algorithmic excercise """
+"""
+Algorithmic excercise.
+"""
 
 
 def canUnlockAll(boxes):
