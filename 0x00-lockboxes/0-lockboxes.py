@@ -1,33 +1,29 @@
 #!/usr/bin/python3
-""" Lockboxes """
+""" Algorythm excercise """
 
 
 def canUnlockAll(boxes):
     """
-    - boxes is a list of lists
-    - A key with the same number as a box opens that box
-    - You can assume all keys will be positive integers
-    - The first box boxes[0] is unlocked
-    - Return True if all boxes can be opened, else return False
+    Checks whether all boxes can be unlocked
     """
-    canUnlockAll = False
-    keys = {0: True}
+
+    hash_dict = {0: True}
     n_boxes = len(boxes)
     while (True):
 
-        n_keys = len(keys)
+        amount_keys = len(keys)
 
         for i in range(len(boxes)):
-            if boxes[i] and keys.get(i, False):
+            if boxes[i] and hash_dict.get(i, False):
                 for j in boxes[i]:
                     if j < n_boxes:
-                        keys[j] = True
+                        hash_dict[j] = True
                     boxes[i] = None
 
-        if not (len(keys) > n_keys):
+        if not (len(hash_dict) > amount_keys):
             break
 
-    if n_keys == len(boxes):
-        canUnlockAll = True
+    if amount_keys == len(boxes):
+        return True
 
-    return canUnlockAll
+    return False
