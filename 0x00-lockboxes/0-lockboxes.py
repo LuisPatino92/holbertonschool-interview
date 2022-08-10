@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """Interview problem - lockboxes"""
+import pdb
 
 
 def canUnlockAll(boxes):
@@ -25,5 +26,8 @@ def canUnlockAll(boxes):
             return False
         hash_dict = integrate_box(boxes[i], hash_dict)
         for j in hash_dict.copy().keys():
-            hash_dict = integrate_box(boxes[j], hash_dict)
+            try:
+                hash_dict = integrate_box(boxes[j], hash_dict)
+            except:
+                pass
     return True
