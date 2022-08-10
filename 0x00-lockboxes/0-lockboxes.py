@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """Interview problem - lockboxes"""
-import pdb
 
 
 def canUnlockAll(boxes):
