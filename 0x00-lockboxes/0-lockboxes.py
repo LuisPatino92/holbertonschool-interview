@@ -7,8 +7,8 @@ def canUnlockAll(boxes):
     Checks whether all boxes can be unlocked
     """
 
-    hash_dict = {0: True}
     amount_boxes = len(boxes)
+    hash_dict = {0: True}
     while (True):
 
         amount_keys = len(hash_dict)
@@ -20,10 +20,10 @@ def canUnlockAll(boxes):
                         hash_dict[j] = True
                     boxes[i] = None
 
-        if len(hash_dict) < amount_keys:
+        if not (len(hash_dict) > amount_keys):
             break
 
-    if amount_keys == amount_boxes:
+    if amount_keys == len(boxes):
         return True
 
     return False
