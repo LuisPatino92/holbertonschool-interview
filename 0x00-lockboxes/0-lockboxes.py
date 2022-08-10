@@ -9,21 +9,22 @@ def canUnlockAll(boxes):
 
     amount_boxes = len(boxes)
     hash_dict = {0: True}
+
     while (True):
 
         amount_keys = len(hash_dict)
 
-        for i in range(len(boxes)):
-            if boxes[i] and hash_dict.get(i, False):
-                for j in boxes[i]:
-                    if j < amount_boxes:
-                        hash_dict[j] = True
-                    boxes[i] = None
+        for box in range(len(boxes)):
+            if boxes[box] and hash_dict.get(box, False):
+                for key in boxes[box]:
+                    if key < amount_boxes:
+                        hash_dict[key] = True
+                    boxes[box] = None
 
         if not (len(hash_dict) > amount_keys):
             break
 
-    if amount_keys == len(boxes):
-        return True
+    if amount_keys != len(boxes):
+        return False
 
-    return False
+    return True
