@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Interview problem - lockboxes"""
+""" Lockboxes """
 
 
 def canUnlockAll(boxes):
@@ -10,23 +10,24 @@ def canUnlockAll(boxes):
     - The first box boxes[0] is unlocked
     - Return True if all boxes can be opened, else return False
     """
-    def integrate_box(box, hash):
-        """ Auxiliar function """
-        [*map(lambda x: hash.update({x: x}), box)]
-        return hash
+    canUnlockAll = False
+    keys = {0: True}
+    n_boxes = len(boxes)
+    while (True):
 
-    amount_of_boxes = len(boxes)
-    hash_dict = {}
-    hash_dict = integrate_box(boxes[0], hash_dict)
+        n_keys = len(keys)
 
-    for i in range(1, amount_of_boxes):
+        for i in range(len(boxes)):
+            if boxes[i] and keys.get(i, False):
+                for j in boxes[i]:
+                    if j < n_boxes:
+                        keys[j] = True
+                    boxes[i] = None
 
-        if i not in hash_dict.keys():
-            return False
-        hash_dict = integrate_box(boxes[i], hash_dict)
-        for j in hash_dict.copy().keys():
-            try:
-                hash_dict = integrate_box(boxes[j], hash_dict)
-            except:
-                pass
-    return True
+        if not (len(keys) > n_keys):
+            break
+
+    if n_keys == len(boxes):
+        canUnlockAll = True
+
+    return canUnlockAll
