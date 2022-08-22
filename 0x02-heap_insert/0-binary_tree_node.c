@@ -21,5 +21,5 @@ binary_tree_t *binary_tree_node(binary_tree_t *parent, int value)
 	n->right = NULL;
 	n->n = value;
 
-	return (new_node);
+	return (n);
 }
