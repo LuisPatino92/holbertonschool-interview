@@ -7,15 +7,15 @@ def minOperations(n):
     Docstring
     """
 
-    if type(n) == int:
-        ooerations = 0
+    if isinstance(n, int):
+        operations = 0
         i = 2
         while (i <= n):
-            if n % i != 0:
+            if n % i == 0:
                 n = int(n / i)
-                ooerations += i
+                operations += i
                 i = 1
             i += 1
-        return op
+        return operations
     else:
         return 0
