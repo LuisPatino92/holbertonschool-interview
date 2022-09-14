@@ -27,15 +27,18 @@ total_size = 0
 
 for lines in sys.stdin:
 
-    count += 1
-    parsed_line = int(lines.split(" ")[7])
-    total_size += int(lines.split(" ")[8])
+    try:
+        count += 1
+        parsed_line = int(lines.split(" ")[7])
+        total_size += int(lines.split(" ")[8])
 
-    if parsed_line in counter.keys():
-        counter[parsed_line] += 1
-    else:
-        counter[parsed_line] = 1
+        if parsed_line in counter.keys():
+            counter[parsed_line] += 1
+        else:
+            counter[parsed_line] = 1
 
-    if (count == 10):
-        print_metrics()
-        count = 0
+        if (count == 10):
+            print_metrics()
+            count = 0
+    except:
+        exit(0)
