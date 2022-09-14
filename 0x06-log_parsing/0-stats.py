@@ -26,19 +26,17 @@ count = 0
 total_size = 0
 
 for lines in sys.stdin:
-    try:
-        count += 1
-        parsed_line = int(lines.split(" ")[7])
-        total_size += int(lines.split(" ")[8])
+    
+    count += 1
+    parsed_line = int(lines.split(" ")[7])
+    total_size += int(lines.split(" ")[8])
 
-        if parsed_line in counter.keys():
-            counter[parsed_line] += 1
-        else:
-            counter[parsed_line] = 1
+    if parsed_line in counter.keys():
+        counter[parsed_line] += 1
+    else:
+        counter[parsed_line] = 1
 
-        if (count == 9):
-            print_metrics()
-            count = 0
+    if (count == 9):
+        print_metrics()
+        count = 0
 
-    except KeyboardInterrupt():
-        keyboardInterruptHandler()
