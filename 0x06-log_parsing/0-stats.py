@@ -36,6 +36,6 @@ for lines in sys.stdin:
     else:
         counter[parsed_line] = 1
 
-    if (count == 9):
+    if (count == 10):
         print_metrics()
         count = 0
