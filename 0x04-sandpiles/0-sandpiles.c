@@ -1,3 +1,5 @@
+#include "sandpiles.h"
+
 /**
  * impr_malla - Sand pile grid printer
  * @grid: Grid
