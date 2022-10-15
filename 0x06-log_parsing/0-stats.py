@@ -1,44 +1,51 @@
 #!/usr/bin/python3
-"""
-Metrics printer
-"""
-
-import signal
+""" Module Docstring """
 import sys
 
 
-def print_metrics():
-    print("File size: {}".format(total_size))
-    for metric in sorted(counter.keys()):
-        print("{}: {}".format(metric, counter[metric]))
+def print_st(dic, size):
+    """ Log printer """
+    print("File size: {:d}".format(size))
+    for i in sorted(dic.keys()):
+        if dic[i] != 0:
+            print("{}: {:d}".format(i, dic[i]))
 
 
-def keyboardInterruptHandler(signal, frame):
-    print_metrics()
-    exit(0)
-
-
-signal.signal(signal.SIGINT, keyboardInterruptHandler)
-
-counter = {}
+sts = {
+    "200": 0,
+    "301": 0,
+    "400": 0,
+    "401": 0,
+    "403": 0,
+    "404": 0,
+    "405": 0,
+    "500": 0
+    }
 
 count = 0
-total_size = 0
+size = 0
 
-for lines in sys.stdin:
+try:
+    for l in sys.stdin:
+        if count != 0 and count % 10 == 0:
+            print_st(sts, size)
 
-    try:
+        stlist = l.split()
         count += 1
-        parsed_line = int(lines.split(" ")[7])
-        total_size += int(lines.split(" ")[8])
 
-        if parsed_line in counter.keys():
-            counter[parsed_line] += 1
-        else:
-            counter[parsed_line] = 1
+        try:
+            size += int(stlist[-1])
+        except:
+            pass
 
-        if (count == 10):
-            print_metrics()
-            count = 0
-    except:
-        exit(0)
+        try:
+            if stlist[-2] in sts:
+                sts[stlist[-2]] += 1
+        except:
+            pass
+    print_st(sts, size)
+
+
+except KeyboardInterrupt:
+    print_st(sts, size)
+    raise
