@@ -6,7 +6,7 @@ def validUTF8(data):
     """
     Method docstring
     """
-    
+
     n_by = 0
     m_f = 1 << 7
     m_s = 1 << 6
@@ -26,7 +26,7 @@ def validUTF8(data):
 
         else:
             if not (chunk & m_f and not (chunk & m_s)):
-                    return False
+                return False
 
         n_by -= 1
 
